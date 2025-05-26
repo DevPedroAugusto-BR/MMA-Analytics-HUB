@@ -8,10 +8,10 @@ from program import (
     unify_fighters_data
 )
 
-df_with_age = pd.read_csv("MMA-Analytics-HUB\database\pro_mma_fighters_withAge.csv")
-df_with_wins_and_loses = pd.read_csv("MMA-Analytics-HUB\database\ufc-fighters-statistics_WithWinsAndLoses.csv")
-df_master_fights = pd.read_csv("MMA-Analytics-HUB\database\ufc-masterFights.csv")
-df_upcomingFights = pd.read_csv("MMA-Analytics-HUB\database\upcomingFights.csv")
+df_with_age = pd.read_csv("Analysis\database\pro_mma_fighters_withAge.csv")
+df_with_wins_and_loses = pd.read_csv("Analysis\database\ufc-fighters-statistics_WithWinsAndLoses.csv")
+df_master_fights = pd.read_csv("Analysis\database\ufc-masterFights.csv")
+df_upcomingFights = pd.read_csv("Analysis\database\upcomingFights.csv")
 
 
 df_final = unify_fighters_data(df_with_age, df_with_wins_and_loses, df_master_fights, df_upcomingFights)
