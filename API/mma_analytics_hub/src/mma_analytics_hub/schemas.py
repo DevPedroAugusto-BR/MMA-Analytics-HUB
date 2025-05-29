@@ -1,10 +1,12 @@
-from pydantic import BaseModel, EmailStr
-from typing import Optional
 from datetime import date
-from typing import List
+from typing import List, Optional
+
+from pydantic import BaseModel, EmailStr
+
 
 class Message(BaseModel):
     message: str
+
 
 class UserSchema(BaseModel):
     username: str
@@ -13,15 +15,18 @@ class UserSchema(BaseModel):
     perfil: Optional[str] = "usuario"
     ativo: Optional[bool] = True
 
+
 class UserPublic(BaseModel):
     id: int
-    username: str 
+    username: str
     email: EmailStr
     perfil: Optional[str] = "usuario"
     ativo: Optional[bool] = True
 
+
 class UserDB(UserSchema):
-    id: int 
+    id: int
+
 
 # --- Weight Class ---
 class WeightClassSchema(BaseModel):
