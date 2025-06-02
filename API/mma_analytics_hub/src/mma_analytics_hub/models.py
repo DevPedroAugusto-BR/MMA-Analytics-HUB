@@ -1,7 +1,8 @@
 # api/models/models.py
 from datetime import datetime
-from sqlalchemy import func, ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column, registry, relationship
+
+from sqlalchemy import ForeignKey, func
+from sqlalchemy.orm import Mapped, mapped_column, registry
 
 table_registry = registry()
 
@@ -47,7 +48,7 @@ class Fighter:
     association: Mapped[str | None]
 
     weight_class_id: Mapped[int] = mapped_column(ForeignKey("weight_classes.id"))
-    
+
     wins: Mapped[int | None]
     losses: Mapped[int | None]
     draws: Mapped[int | None]

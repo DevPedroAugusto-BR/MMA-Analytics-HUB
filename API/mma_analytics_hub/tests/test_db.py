@@ -1,8 +1,9 @@
-from sqlalchemy import select 
-
 from dataclasses import asdict
 
-from mma_analytics_hub.models import User, Fighter, WeightClass
+from sqlalchemy import select
+
+from mma_analytics_hub.models import User
+
 
 def test_create_user(session, mock_db_time):
     with mock_db_time(model=User) as time:

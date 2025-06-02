@@ -1,18 +1,5 @@
 import pandas as pd
 
-from pathlib import Path
-
-# Define a raiz do projeto (onde poetry roda)
-BASE_DIR = Path(__file__).resolve().parent  # src/mma_analytics_hub/Analysis
-DATABASE_DIR = BASE_DIR / "database"
-
-# Define os caminhos completos para os arquivos
-AGE_PATH = DATABASE_DIR / "pro_mma_fighters_withAge.csv"
-STATS_PATH = DATABASE_DIR / "ufc-fighters-statistics_WithWinsAndLoses.csv"
-MASTER_FIGHTS_PATH = DATABASE_DIR / "ufc-masterFights.csv"
-UPCOMING_PATH = DATABASE_DIR / "upcomingFights.csv"
-
-# Lê os arquivos
 
 def get_all_fighters_names(df):
     # Retorna lista com todos os nomes únicos, ordenados alfabeticamente
@@ -123,33 +110,3 @@ def unify_fighters_data(df_with_age, df_with_wins_and_loses, df_master_fights, d
     df_final = df_final.drop_duplicates(subset='name').sort_values('name').reset_index(drop=True)
 
     return df_final
-
-
-df_with_age = pd.read_csv(AGE_PATH)
-df_with_wins_and_loses = pd.read_csv(STATS_PATH)
-df_master_fights = pd.read_csv(MASTER_FIGHTS_PATH)
-df_upcomingFights = pd.read_csv(UPCOMING_PATH)
-
-# Unifica os dados
-df_final = unify_fighters_data(df_with_age, df_with_wins_and_loses, df_master_fights, df_upcomingFights)
-
-if __name__ == "__main__":
-    try:
-        print(f"\n[DEBUG] BASE_DIR: {BASE_DIR}")
-        print(f"[DEBUG] DATABASE_DIR: {DATABASE_DIR}")
-        print(f"[DEBUG] AGE_PATH existe? {AGE_PATH.exists()}")
-        print(f"[DEBUG] STATS_PATH existe? {STATS_PATH.exists()}")
-        print(f"[DEBUG] MASTER_FIGHTS_PATH existe? {MASTER_FIGHTS_PATH.exists()}")
-        print(f"[DEBUG] UPCOMING_PATH existe? {UPCOMING_PATH.exists()}\n")
-
-        df_with_age = pd.read_csv(AGE_PATH)
-        df_with_wins_and_loses = pd.read_csv(STATS_PATH)
-        df_master_fights = pd.read_csv(MASTER_FIGHTS_PATH)
-        df_upcomingFights = pd.read_csv(UPCOMING_PATH)
-
-        df_final = unify_fighters_data(df_with_age, df_with_wins_and_loses, df_master_fights, df_upcomingFights)
-
-        print(f"[SUCESSO] Dados unificados com sucesso. Total de lutadores: {len(df_final)}\n")
-
-    except Exception as e:
-        print(f"[ERRO] Ocorreu um erro durante a execução do script: {e}")
