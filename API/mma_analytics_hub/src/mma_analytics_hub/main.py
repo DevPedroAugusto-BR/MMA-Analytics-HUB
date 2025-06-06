@@ -3,7 +3,7 @@ from http import HTTPStatus
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from .Analysis.etl import load_fighters_data
+#from .Analysis.etl import load_fighters_data
 from mma_analytics_hub.settings import Settings
 from mma_analytics_hub.database import get_session
 from mma_analytics_hub.schemas import (
